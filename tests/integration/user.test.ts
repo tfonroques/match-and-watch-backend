@@ -1,10 +1,10 @@
 export {};
-const { User }  = require("../../models/user.model");
+const { User } = require("../../models/user.model");
 const request = require("supertest");
 const mongoose = require("mongoose");
-let server:any;
+let server: any;
 
-describe('api/genres', () => {
+describe("api/users", () => {
   beforeEach(() => {
     server = require("../../index");
   });
@@ -12,25 +12,24 @@ describe('api/genres', () => {
     await User.deleteMany({});
     await server.close();
   });
-  afterAll(done => {
-  mongoose.connection.close()
-  done()
-})
+  afterAll((done) => {
+    mongoose.connection.close();
+    done();
+  });
   describe("GET /", () => {
-  it("should return all genres", async () => {
-    await User.collection.insertMany([
-      { name: "user1" },
-      { name: "user2" },
-      { name: "user3" },
-    ]);
-    const res = await request(server).get("/api/users");
+    it("should return all users", async () => {
+      await User.collection.insertMany([
+        { name: "user1" },
+        { name: "user2" },
+        { name: "user3" },
+      ]);
+      const res = await request(server).get("/api/users");
 
-    expect(res.status).toBe(200);
-    expect(res.body.length).toBe(3);
-    expect(res.body.some((g: any) => g.name === "user1")).toBeTruthy();
-    expect(res.body.some((g: any) => g.name === "user2")).toBeTruthy();
-    expect(res.body.some((g: any) => g.name === "user3")).toBeTruthy();
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(3);
+      expect(res.body.some((g: any) => g.name === "user1")).toBeTruthy();
+      expect(res.body.some((g: any) => g.name === "user2")).toBeTruthy();
+      expect(res.body.some((g: any) => g.name === "user3")).toBeTruthy();
+    });
   });
 });
-});
-
