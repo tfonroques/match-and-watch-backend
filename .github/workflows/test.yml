@@ -26,3 +26,4 @@ jobs:
     - run: yarn test
       env:
         m_and_w_password: ${{secrets.PASSWORD}}
+        NODE_ENV: test 
