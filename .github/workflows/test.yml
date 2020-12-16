@@ -4,26 +4,24 @@
 name: Node.js CI
 
 on:
-  workflow_dispatch :
+  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - run: yarn install
-    - run: yarn test
-      env:
-        m_and_w_password: ${{secrets.PASSWORD}}
-        NODE_ENV: test 
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: yarn install
+      - run: yarn test
+        env:
+          m_and_w_password: ${{secrets.PASSWORD}}
+          NODE_ENV: test
