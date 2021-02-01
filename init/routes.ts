@@ -1,8 +1,8 @@
-import express from "express"
+import express from 'express';
 
-const users = require("../routes/user.route");
+const users = require('../routes/user.route');
 
-module.exports = function (app: any) {
+module.exports = (app: any): void => {
   app.use(express.json());
-  app.use("/api/users", users);
+  app.use('/api/users', users);
 };
