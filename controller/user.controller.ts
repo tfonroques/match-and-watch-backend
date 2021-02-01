@@ -1,16 +1,17 @@
-export {};
-const { User } = require("../models/user.model");
+import User from '../models/user.model';
 
-module.exports.getUsers = async (req: any, res: any) => {
-  const users = await User.find({}).sort("name");
+const getUsers = async (req: any, res: any): Promise<void> => {
+  const users = await User.find({}).sort('name');
   res.send(users);
 };
 
-module.exports.addUser = async (req: any, res: any) => {
+const addUser = async (req: any, res: any): Promise<void> => {
   const user = new User({
-    name: req.body.name,
+    name: req.body.name
   });
 
   const result = await user.save();
   res.send(result);
 };
+
+export { getUsers, addUser };

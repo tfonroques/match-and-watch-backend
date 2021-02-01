@@ -23,11 +23,14 @@ module.exports = {
     }
   },
   rules: {
-    "no-use-before-define": "off",
-    "no-unused-vars": 2,
+    "no-unused-vars": 0,
+    "no-use-before-define": 0,
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
-    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-member-accessibility": 2,
     "prettier/prettier": 2,
+    // custom rules
+    "import/extensions": 0,
+    "@typescript-eslint/no-var-requires": 0,
   }
 };
